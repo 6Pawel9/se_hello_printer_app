@@ -7,7 +7,6 @@ moje_imie = "Pawel"
 msg = "Hello World!"
 
 
-
 @app.route('/')
 def index():
     output = request.args.get('output')
@@ -15,7 +14,6 @@ def index():
         output = PLAIN
     return get_formatted(msg, moje_imie,
                          output.lower())
-
 
 
 @app.route('/outputs')
