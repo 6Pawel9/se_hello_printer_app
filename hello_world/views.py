@@ -3,7 +3,7 @@ from formater import get_formatted
 from formater import SUPPORTED, PLAIN
 from flask import request
 
-moje_imie = "Pawel"
+MOJE_IMIE = "Pawel"
 msg = "Witaj swiecie!"
 
 
@@ -12,7 +12,8 @@ def index():
     output = request.args.get('output')
     if not output:
         output = PLAIN
-    return get_formatted(msg, moje_imie,
+    imie = request.args.get('imie')
+    return get_formatted(msg, MOJE_IMIE,
                          output.lower())
 
 
