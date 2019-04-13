@@ -108,3 +108,13 @@ Materiały
 =========
 
 - https://virtualenvwrapper.readthedocs.io/en/latest/
+
+
+Status
+=========
+.. image:: https://travis-ci.org/6Pawel9/se_hello_printer_app.svg?branch=master
+    :target: https://travis-ci.org/6Pawel9/se_hello_printer_app
+
+.. image:: https://www.statuscake.com
+    :target: https://app.statuscake.com/button/index.php?Track=slzUazJUBA&Days=1&Design=7
+
