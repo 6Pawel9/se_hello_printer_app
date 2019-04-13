@@ -4,6 +4,7 @@ import unittest
 
 
 class TestFormater(unittest.TestCase):
+
     def test_plain_uppercase(self):
         r = plain_text_upper_case("WWIMIE", "EEEMSG")
         name = r.split(" ")[0]
