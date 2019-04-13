@@ -3,15 +3,13 @@ pipeline {
     stages {
         stage('Deps') {
             steps {
-	            sh 'make deps'
-              }
-           }
-    }
-    stages {
+                sh 'make deps'
+            }
+        }
         stage('Test') {
             steps {
-	            sh 'make test'
-        	}
+                sh 'make test'
+            }
         }
     }
 }
