@@ -28,3 +28,10 @@ pipeline {
         }
     }
 }
+
+post {
+	always { 
+		//Cobertura test coverage
+		step([$class: 'CoberturaPublisher', coberturaReportFile: 'coverage.xml'])
+	}
+}
