@@ -26,12 +26,14 @@ pipeline {
 			tools: [[$class: 'JUnitType', pattern: 'test_results.xml']]])
             }
         }
-    }
-}
-
-post {
-	always { 
+	post {
+	    always { 
 		junit 'junit*.xml'
 		step([$class: 'CoberturaPublisher', coberturaReportFile: 'coverage.xml'])
 	}
 }
+
+    }
+}
+
+
