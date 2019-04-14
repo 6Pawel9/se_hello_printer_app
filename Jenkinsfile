@@ -8,28 +8,31 @@ pipeline {
         }
         stage('Test') {
             steps {
-              sh 'make test_xunit || true'
-              xunit thresholds: [
-                  skipped(failureThreshold: '0'),
-                  failed(failureThreshold: '1')],
-                  tools: [
-                      JUnit(deleteOutputFiles: true, failIfNotNew: true, pattern: 'test_results.xml',
-                            skipNoTestFiles: false, stopProcessingIfError: true)
-                  ]
-        }
+                sh 'make test'
+            }
         }
         stage('Lint') {
             steps {
-              sh 'make lint'
+                sh 'make lint'
+            }
+        }
+	stage('Testxunit') {
+            steps {
+                sh 'make test_xunit || true'
+		step([$class: 'XUnitBuilder',
+			thresholds: [
+				[$class: 'SkippedThreshold', failureThreshold: '0'],
+				[$class: 'FailedThreshold', failureThreshold: '1']],
+			tools: [[$class: 'JUnitType', pattern: 'test_results.xml']]])
             }
         }
     }
-    post{
-        always{
+  post {
+        always {
             cobertura autoUpdateHealth: false, autoUpdateStability: false, coberturaReportFile: 'coverage.xml',
-            conditionalCoverageTargets: '70, 0, 0', failUnhealthy: false, failUnstable: false, lineCoverageTargets:
-            '80, 0, 0', maxNumberOfBuilds: 0, methodCoverageTargets: '80, 0, 0', onlyStable: false, sourceEncoding: 'ASCII',
-            zoomCoverageChart: false
+                conditionalCoverageTargets: '70, 0, 0', failUnhealthy: false, failUnstable: false, lineCoverageTargets:
+                '80, 0, 0', maxNumberOfBuilds: 0, methodCoverageTargets: '80, 0, 0', onlyStable: false, sourceEncoding: 'ASCII',
+                zoomCoverageChart: false
         }
     }
 }
