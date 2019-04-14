@@ -29,11 +29,12 @@ pipeline {
 
 
     }
-}
-
-post {
+    post {
 	always { 
 		junit 'junit*.xml'
 		step([$class: 'CoberturaPublisher', coberturaReportFile: 'coverage.xml'])
 	}
 }
+}
+
+
