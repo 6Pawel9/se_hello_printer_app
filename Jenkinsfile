@@ -33,8 +33,6 @@ pipeline {
 	always { 
 		junit 'junit*.xml'
 		step([$class: 'CoberturaPublisher', coberturaReportFile: 'coverage.xml'])
+		}
 	}
 }
-}
-
-
