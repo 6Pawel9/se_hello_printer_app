@@ -34,3 +34,6 @@ test_xunit:
 test_cov:
 	PYTHONPATH=. py.test --verbose -s --cov=. --cov-report xml
 
+test_api:
+	$ PYTHONPATH=. py.check_api
+
