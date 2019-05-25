@@ -4,8 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <title>IMIONA</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+</script>
+
 </head>
 <body>
+    <script type="text/javascript">
+      $(document).ready(function() {console.log("ready!");
+        $.getJSON( "/?output=json", function( data ){console.log(data);
+          $('#imie').text(data['imie'])})});
+      </script>
+      <div>Czesc <p id='imie'></p><div>
     <a href="https://google.com/search?q=imiona%20slawnych%20ludzi">Znajdz imiona ludzi</a>
 </body>
 </html>
