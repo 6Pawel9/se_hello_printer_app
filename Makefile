@@ -8,6 +8,10 @@ run:
 	python main.py
 test:
 	$ PYTHONPATH=. py.test
+
+test_ui:
+	python test_ui/test_ui.py
+
 docker_build:
 	docker build -t hello-world-printer .
 docker_run: docker_build
@@ -37,5 +41,4 @@ test_cov:
 test_api:
 	$ PYTHONPATH=. py.check_api
 
-test_ui:
-	py.test -s --verbose test_ui/test_ui.py
+
