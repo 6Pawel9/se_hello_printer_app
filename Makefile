@@ -29,11 +29,13 @@ test_smoke:
 	curl -s -o /dev/null -w "%{http_code}" --fail 127.0.0.1:5000
 
 test_xunit:
-	PYTHONPATH=. py.test --verbose -s --cov=. --cov-report xml --junit-xml=test_results.xml
+	PYTHONPATH=. py.test --verbose -s --cov=. --cov-report xml --junit-xml=test_results.xml --ignore=test_ui
 
 test_cov:
-	PYTHONPATH=. py.test --verbose -s --cov=. --cov-report xml
+	PYTHONPATH=. py.test --verbose -s --cov=. --cov-report xml 
 
 test_api:
 	$ PYTHONPATH=. py.check_api
 
+test_ui:
+	py.test -s --verbose test_ui/test_ui.py
